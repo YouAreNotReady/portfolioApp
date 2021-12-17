@@ -18,6 +18,21 @@ class _NoteCardState extends State<NoteCard> {
   
 
   @override
+  void initState() {
+    super.initState();
+    load();
+  }
+
+  void load() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> notes = prefs.getStringList('favourites') ?? [];
+    if (notes.contains(widget.note.id.toString())) {
+      setState(() {
+        isFavourite = true;
+      });
+    }
+  }
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => showModalBottomSheet(

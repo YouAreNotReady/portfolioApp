@@ -17,17 +17,17 @@ class NoteModal extends StatefulWidget {
 
 class _NoteModalState extends State<NoteModal> {
 
-  bool isPressed = false;
-
-  void load() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> notes = prefs.getStringList('favourites') ?? [];
-    if (notes.contains(widget.note.id.toString())) {
-      setState(() {
-        isPressed = !isPressed;
-      });
-    }
-  }
+  bool isPressed = false;//это для иконки
+ //реализовать
+  // void load() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   List<String> notes = prefs.getStringList('favourites') ?? [];
+  //   if (notes.contains(widget.note.id.toString())) {
+  //     setState(() {
+  //       isPressed = !isPressed;
+  //     });
+  //   }
+  // }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,7 +75,7 @@ class _NoteModalState extends State<NoteModal> {
                   iconSize: 30,
                   icon: (isPressed) ? const Icon(Icons.star) : const Icon(Icons.star_border_outlined),
                   color:(isPressed) ? Colors.amber : const Color(0xff907397),
-                  onPressed: () => load(),
+                  onPressed: () => null,
                 ),
               ),
             ],
